@@ -16,8 +16,14 @@ require "partial".setup {
 }
 ```
 
-When formatting a JSON string section in a file, visual select the section and call:
+When formatting a JSON string section in a file, visual select the section and do:
 
 ```
 :'<,'>lua require("partial").apply("json")
+```
+
+or call an alias to the function as:
+
+```
+:'<,'>Partial json
 ```

@@ -7,7 +7,4 @@ c =   1
 ;
 
 
-insert into a
-(foo, bar) values
-("foo1", "bar1"), ("foo2", "bar2")
-;
+insert into a (foo, bar) values ("foo1", "bar1"), ("foo2", "bar2");
