@@ -14,7 +14,7 @@ local function get_range(f, t)
   }
 end
 
-local function get_selection(from, to)
+local function get_input(from, to)
   local before = ""
   local selected = {}
   local after = ""
@@ -47,7 +47,7 @@ local function string_split(input, sep)
   return output
 end
 
-local function finalize_result(result, selection)
+local function finalize_output(result, selection)
   local count = (result and #result or 0)
   if count > 0 then
     result[1] = selection.before..result[1]
@@ -56,15 +56,15 @@ local function finalize_result(result, selection)
   return result
 end
 
-local function set_result(formatted, from, to)
+local function set_output(formatted, from, to)
   api.nvim_buf_set_lines(0, from.line-1, to.line, true, formatted)
 end
 
 local function apply(name)
   local range = get_range(fn.getpos("'<"), fn.getpos("'>"))
-  local selection = get_selection(range.from, range.to)
+  local selection = get_input(range.from, range.to)
   local formatted = string_split(fn.system(config[name], table.concat(selection.selected, "\n")), "\r\n")
-  set_result(finalize_result(formatted, selection), range.from, range.to)
+  set_output(finalize_output(formatted, selection), range.from, range.to)
 end
 
 return {
