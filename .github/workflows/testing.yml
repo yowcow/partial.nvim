@@ -3,7 +3,7 @@ name: Run Lua Testing
 on: [push, pull_request]
 
 jobs:
-  busted:
+  testing:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
