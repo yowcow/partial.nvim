@@ -5,23 +5,23 @@ local function get_range(f, t)
   }
 end
 
-local function get_input(from, to, lines)
+local function get_input(range, lines)
   local before = ""
   local selected = {}
   local after = ""
   for i, v in ipairs(lines) do
-    local curline = from.line+i-1
-    if curline == from.line then
-      before = string.sub(v, 0, from.col-1)
-      table.insert(selected, string.sub(v, from.col))
-    elseif curline == to.line then
-      table.insert(selected, string.sub(v, 0, to.col))
-      if #v > to.col then -- forget the remainder if the line is not as long as col index
-        after = string.sub(v, to.col+1)
+    local curline = range.from.line+(i-1)
+    if curline == range.to.line then
+      if #v > range.to.col then -- forget the remainder if the line is not as long as col index
+        after = string.sub(v, range.to.col+1)
       end
-    else
-      table.insert(selected, v)
+      v = string.sub(v, 0, range.to.col)
     end
+    if curline == range.from.line then
+      before = string.sub(v, 0, range.from.col-1)
+      v = string.sub(v, range.from.col)
+    end
+    table.insert(selected, v)
   end
   return {
     before = before,

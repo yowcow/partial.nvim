@@ -10,11 +10,7 @@ end
 
 local function apply(name)
   local range = util.get_range(fn.getpos("'<"), fn.getpos("'>"))
-  local selection = util.get_input(
-    range.from,
-    range.to,
-    api.nvim_buf_get_lines(0, range.from.line-1, range.to.line, true)
-  )
+  local selection = util.get_input(range, api.nvim_buf_get_lines(0, range.from.line-1, range.to.line, true))
   local applied = util.split_string(fn.system(config[name], table.concat(selection.selected, "\n")), "\r\n")
   local formatted = util.finalize_output(selection.before, applied, selection.after)
   api.nvim_buf_set_lines(0, range.from.line-1, range.to.line, true, formatted)

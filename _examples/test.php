@@ -1,5 +1,7 @@
 <?php
 
+$sql = 'select count(1) from foo';
+
 $sql = 'select
 a, count(1)
 from b where
@@ -10,5 +12,8 @@ $xml = '<VAST><Ad><Wrapper><VASTAdTagURI>http://example.com/</VASTAdTagURI>
 </Wrapper></Ad>
 </VAST>';
 
-$json = '{"id":123,
+$json = '{"id":123,"name":"yowcow"}';
+
+$json = '{
+"id":123,
 "name":"yowcow"}';
