@@ -3,6 +3,6 @@ all:
 	luarocks install --local vusted
 
 test:
-	vusted
+	vusted $@
 
 .PHONY: all test
