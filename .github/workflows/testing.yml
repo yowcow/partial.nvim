@@ -13,6 +13,8 @@ jobs:
           version: nightly
       - name: lua
         uses: leafo/gh-actions-lua@v9
+        with:
+          luaVersion: "5.1.5"
       - name: luarocks
         uses: leafo/gh-actions-luarocks@v4
       - name: run test
