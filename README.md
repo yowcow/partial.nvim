@@ -13,6 +13,7 @@ require "partial".setup {
   json = {"jq", "."},
   sql = {"sql-formatter", "--config", vim.fn.expand("~/.config/sql-formatter/config.json")},
   xml = {"xmllint", "--format", "-"},
+  yml = {"yamlfmt"},
 }
 ```
 

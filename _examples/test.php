@@ -17,3 +17,15 @@ $json = '{"id":123,"name":"yowcow"}';
 $json = '{
 "id":123,
 "name":"yowcow"}';
+
+$yml = <<<END_OF_YAML
+    list1: [ item1, item2   ]
+    list2:
+       - item1
+       - item2
+    obj1: [   {  k1: v1,    k2: v2    }  ]
+    obj2:
+      -
+        k1: v1
+        k2:   v2
+END_OF_YAML;
