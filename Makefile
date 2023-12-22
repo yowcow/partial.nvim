@@ -1,7 +1,8 @@
 all:
-	luarocks install --local busted
+	luarocks install --local luacheck
+	luarocks install --local vusted
 
 test:
-	busted
+	vusted $@
 
 .PHONY: all test

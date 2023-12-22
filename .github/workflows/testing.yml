@@ -1,13 +1,25 @@
 name: Run Lua Testing
-
 on: [push, pull_request]
-
 jobs:
   testing:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Lua Busted
-        uses: lunarmodules/busted@v2.2.0
-
+      - uses: rhysd/action-setup-vim@v1
+        id: vim
+        with:
+          neovim: true
+          version: nightly
+      - name: lua
+        uses: leafo/gh-actions-lua@v9
+        with:
+          luaVersion: "5.1.5"
+      - name: luarocks
+        uses: leafo/gh-actions-luarocks@v4
+      - name: run test
+        shell: bash
+        run: |
+          luarocks install luacheck
+          luarocks install vusted
+          vusted ./test
